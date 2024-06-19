@@ -6,3 +6,6 @@
 
 tsconfig.json
 tsup.config.js
+
+.editorconfig
+.prettierrc.json
