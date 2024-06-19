@@ -79,7 +79,7 @@ gClient
 const message = "Confira o anexo!";
 const mediaUrl = "https://example.com/path/to/media.jpg";
 
-client
+gClient
   .sendMedia(message, mediaUrl, phones)
   .then((response) => console.log(response))
   .catch((error) => console.error(error));
@@ -90,7 +90,7 @@ client
 ```js
 const groups = ["group1_id", "group2_id"];
 
-client
+gClient
   .sendGroupMessage(messages, groups)
   .then((response) => console.log(response))
   .catch((error) => console.error(error));
@@ -99,9 +99,9 @@ client
 ## Agendamento de Mensagens
 
 ```js
-const scheduleUtcDate = "2023-12-31T23:59:59Z";
+const scheduleUtcDate = "YYYY-MM-DDTHH:mm:ss+00";
 
-client
+gClient
   .scheduleMessage(messages, phones, scheduleUtcDate)
   .then((response) => console.log(response))
   .catch((error) => console.error(error));
