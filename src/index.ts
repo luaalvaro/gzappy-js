@@ -1,16 +1,22 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
 class GzappyClient {
   private userTokenId: string;
   private instanceId: string;
-  private instanceToken: string;
   private baseURL: string;
-  private api: any;
+  private api: AxiosInstance;
 
-  constructor({ userTokenId, instanceId, instanceToken }: GzappyClientOptions) {
+  constructor({ userTokenId, instanceId }: GzappyClientOptions) {
+    if (!userTokenId) {
+      throw new Error("userTokenId for gzappy-js is required");
+    }
+
+    if (!instanceId) {
+      throw new Error("instanceId for gzappy-js is required");
+    }
+
     this.userTokenId = userTokenId;
     this.instanceId = instanceId;
-    this.instanceToken = instanceToken;
     this.baseURL = "https://api.gzappy.com/v1";
 
     this.api = axios.create({
@@ -26,11 +32,10 @@ class GzappyClient {
     try {
       const response = await this.api.post("/message/send-message", {
         instance_id: this.instanceId,
-        instance_token: this.instanceToken,
         message: messages,
         phone: phones,
       });
-      return { data: response.data };
+      return response.data as { msg: string };
     } catch (error) {
       console.error(error);
       return { error: "Error sending message" };
@@ -41,12 +46,11 @@ class GzappyClient {
     try {
       const response = await this.api.post("/message/send-media", {
         instance_id: this.instanceId,
-        instance_token: this.instanceToken,
         message: message,
         mediaUrl: mediaUrl,
         phone: phones,
       });
-      return { data: response.data };
+      return response.data as { msg: string };
     } catch (error) {
       console.error(error);
       return { error: "Error sending message" };
@@ -57,11 +61,10 @@ class GzappyClient {
     try {
       const response = await this.api.post("/message/send-group-message", {
         instance_id: this.instanceId,
-        instance_token: this.instanceToken,
         message: messages,
         group: groups,
       });
-      return { data: response.data };
+      return response.data as { msg: string };
     } catch (error) {
       console.error(error);
       return { error: "Error sending message" };
@@ -76,12 +79,14 @@ class GzappyClient {
     try {
       const response = await this.api.post("/message/schedule-message", {
         instance_id: this.instanceId,
-        instance_token: this.instanceToken,
         message: messages,
         phone: phones,
         send_at: scheduleUtcDate,
       });
-      return { data: response.data };
+      return response.data as {
+        status: string;
+        message: string;
+      };
     } catch (error) {
       console.error(error);
       return { error: "Error sending message" };
