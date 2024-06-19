@@ -44,9 +44,8 @@ class GzappyClient {
         phone: phones,
       })
       return response.data as { msg: string }
-    } catch (error) {
-      console.error(error)
-      return { error: 'Error sending message' }
+    } catch (error: any) {
+      return error.data
     }
   }
 
@@ -67,9 +66,8 @@ class GzappyClient {
         phone: phones,
       })
       return response.data as { msg: string }
-    } catch (error) {
-      console.error(error)
-      return { error: 'Error sending message' }
+    } catch (error: any) {
+      return error.data
     }
   }
 
@@ -89,9 +87,8 @@ class GzappyClient {
         group: groups,
       })
       return response.data as { msg: string }
-    } catch (error) {
-      console.error(error)
-      return { error: 'Error sending message' }
+    } catch (error: any) {
+      return error.data
     }
   }
 
@@ -119,9 +116,8 @@ class GzappyClient {
         status: string
         message: string
       }
-    } catch (error) {
-      console.error(error)
-      return { error: 'Error sending message' }
+    } catch (error: any) {
+      return error.data
     }
   }
 }
