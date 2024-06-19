@@ -55,10 +55,9 @@ import gzappy from 'gzappy-js'
 // Definição das variáveis de ambiente
 const userTokenId = process.env.USER_TOKEN_ID
 const instanceId = process.env.INSTANCE_ID
-const instanceToken = process.env.INSTANCE_TOKEN
 
 // Criação de uma instância do gzappy client
-const gClient = new gzappy({ userTokenId, instanceId, instanceToken })
+const gClient = new gzappy({ userTokenId, instanceId })
 
 // Enviando mensagens
 const messages = [
