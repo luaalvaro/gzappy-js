@@ -1,8 +1,8 @@
 <div align="center">
     <h1>GZAPPY</h1>
     <a href="https://gzappy.com"><img src="https://img.shields.io/badge/GZAPPY-API-blue" alt="GZAPPY API" /></a>
-    <a href="https://www.npmjs.com/package/gzappy-client"><img src="https://img.shields.io/npm/v/gzappy-js?maxAge=3600" alt="npm version" /></a>
-    <a href="https://www.npmjs.com/package/gzappy-client"><img src="https://img.shields.io/npm/dt/gzappy-js?maxAge=3600" alt="npm downloads" /></a>
+    <a href="https://www.npmjs.com/package/gzappy-js"><img src="https://img.shields.io/npm/v/gzappy-js?maxAge=3600" alt="npm version" /></a>
+    <a href="https://www.npmjs.com/package/gzappy-js"><img src="https://img.shields.io/npm/dt/gzappy-js?maxAge=3600" alt="npm downloads" /></a>
 </div>
 
 ## Introdução
