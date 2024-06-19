@@ -50,59 +50,59 @@ Este é um exemplo simples de como configurar e usar esta biblioteca. Você pode
 
 ```js
 // Importação do módulo gzappy-js
-import gzappy from "gzappy-js";
+import gzappy from 'gzappy-js'
 
 // Definição das variáveis de ambiente
-const userTokenId = process.env.USER_TOKEN_ID;
-const instanceId = process.env.INSTANCE_ID;
-const instanceToken = process.env.INSTANCE_TOKEN;
+const userTokenId = process.env.USER_TOKEN_ID
+const instanceId = process.env.INSTANCE_ID
+const instanceToken = process.env.INSTANCE_TOKEN
 
 // Criação de uma instância do gzappy client
-const gClient = new gzappy({ userTokenId, instanceId, instanceToken });
+const gClient = new gzappy({ userTokenId, instanceId, instanceToken })
 
 // Enviando mensagens
 const messages = [
-  "Olá, tudo bem?",
-  "Você tem um novo agendamento marcado, Sr Cliente",
-];
-const phones = ["5511999999999", "5511333333333"];
+  'Olá, tudo bem?',
+  'Você tem um novo agendamento marcado, Sr Cliente',
+]
+const phones = ['5511999999999', '5511333333333']
 
 gClient
   .sendMessage(messages, phones)
   .then((response) => console.log(response))
-  .catch((error) => console.error(error));
+  .catch((error) => console.error(error))
 ```
 
 ## Envio de mídias
 
 ```js
-const message = "Confira o anexo!";
-const mediaUrl = "https://example.com/path/to/media.jpg";
+const message = 'Confira o anexo!'
+const mediaUrl = 'https://example.com/path/to/media.jpg'
 
 gClient
   .sendMedia(message, mediaUrl, phones)
   .then((response) => console.log(response))
-  .catch((error) => console.error(error));
+  .catch((error) => console.error(error))
 ```
 
 ## Envio de Mensagens para Grupos
 
 ```js
-const groups = ["group1_id", "group2_id"];
+const groups = ['group1_id', 'group2_id']
 
 gClient
   .sendGroupMessage(messages, groups)
   .then((response) => console.log(response))
-  .catch((error) => console.error(error));
+  .catch((error) => console.error(error))
 ```
 
 ## Agendamento de Mensagens
 
 ```js
-const scheduleUtcDate = "YYYY-MM-DDTHH:mm:ss+00";
+const scheduleUtcDate = 'YYYY-MM-DDTHH:mm:ss+00'
 
 gClient
   .scheduleMessage(messages, phones, scheduleUtcDate)
   .then((response) => console.log(response))
-  .catch((error) => console.error(error));
+  .catch((error) => console.error(error))
 ```
