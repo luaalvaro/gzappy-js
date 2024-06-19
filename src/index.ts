@@ -37,6 +37,28 @@ class GzappyClient {
       return { error: 'Phone number cannot be empty' }
     }
 
+    if (messages.some((message) => message.length > 5000)) {
+      return { error: 'Message cannot be more than 5000 characters' }
+    }
+
+    if (messages.length > 3) {
+      return { error: 'You can only send 3 messages at a time' }
+    }
+
+    if (phones.length > 5) {
+      return { error: 'You can only send to 5 numbers at a time' }
+    }
+
+    if (
+      phones.some(
+        (phone) =>
+          phone.replace(/\D/g, '').length < 12 ||
+          phone.replace(/\D/g, '').length > 15
+      )
+    ) {
+      return { error: 'Phone number is invalid' }
+    }
+
     try {
       const response = await this.api.post('/message/send-message', {
         instance_id: this.instanceId,
