@@ -29,6 +29,14 @@ class GzappyClient {
   }
 
   async sendMessage(messages: string[], phones: string[]) {
+    if (messages.some((message) => message === "")) {
+      return { error: "Message cannot be empty" };
+    }
+
+    if (phones.some((phone) => phone === "")) {
+      return { error: "Phone number cannot be empty" };
+    }
+
     try {
       const response = await this.api.post("/message/send-message", {
         instance_id: this.instanceId,
@@ -43,6 +51,14 @@ class GzappyClient {
   }
 
   async sendMedia(message: string, mediaUrl: string, phones: string[]) {
+    if (message === "") {
+      return { error: "Message cannot be empty" };
+    }
+
+    if (phones.some((phone) => phone === "")) {
+      return { error: "Phone number cannot be empty" };
+    }
+
     try {
       const response = await this.api.post("/message/send-media", {
         instance_id: this.instanceId,
@@ -58,6 +74,14 @@ class GzappyClient {
   }
 
   async sendGroupMessage(messages: string[], groups: string[]) {
+    if (messages.some((message) => message === "")) {
+      return { error: "Message cannot be empty" };
+    }
+
+    if (groups.some((group) => group === "")) {
+      return { error: "Group number cannot be empty" };
+    }
+
     try {
       const response = await this.api.post("/message/send-group-message", {
         instance_id: this.instanceId,
@@ -76,6 +100,14 @@ class GzappyClient {
     phones: string[],
     scheduleUtcDate?: string
   ) {
+    if (messages.some((message) => message === "")) {
+      return { error: "Message cannot be empty" };
+    }
+
+    if (phones.some((phone) => phone === "")) {
+      return { error: "Phone number cannot be empty" };
+    }
+
     try {
       const response = await this.api.post("/message/schedule-message", {
         instance_id: this.instanceId,
