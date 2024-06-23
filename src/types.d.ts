@@ -1,4 +1,4 @@
 interface GzappyClientOptions {
-  userTokenId: string
+  token: string
   instanceId: string
 }

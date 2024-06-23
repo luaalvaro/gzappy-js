@@ -32,6 +32,10 @@ GZAPPY-JS é um pacote JavaScript que facilita a integração com a API de Whats
 - Editar Tag ⏱️
 - Excluir Tag ⏱️
 
+## Autenticação
+
+A partir da versão 0.0.16, a autenticação é feita através do cabeçalho `Authorization` com o API Token gerado no painel da GZAPPY.
+
 ## Documentação
 
 Você pode encontrar a documentação completa em [https://docs.gzappy.com](https://docs.gzappy.com).
@@ -53,18 +57,18 @@ Este é um exemplo simples de como configurar e usar esta biblioteca. Você pode
 import gzappy from 'gzappy-js'
 
 // Definição das variáveis de ambiente
-const userTokenId = process.env.USER_TOKEN_ID
-const instanceId = process.env.INSTANCE_ID
+const token = process.env.GZAPPY_API_TOKEN
+const instanceId = process.env.GZAPPY_INSTANCE_ID
 
 // Criação de uma instância do gzappy client
-const gClient = new gzappy({ userTokenId, instanceId })
+const gClient = new gzappy({ token, instanceId })
 
 // Enviando mensagens
 const messages = [
   'Olá, tudo bem?',
   'Você tem um novo agendamento marcado, Sr Cliente',
 ]
-const phones = ['5511999999999', '5511333333333']
+const phones = ['5511999999999']
 
 gClient
   .sendMessage(messages, phones)

@@ -2,21 +2,21 @@
 import gzappy from '../src/index'
 import 'dotenv/config'
 
-const USER_TOKEN_ID = process.env.GZAPPY_USER_TOKEN_ID
+const GZAPPY_API_TOKEN = process.env.GZAPPY_API_TOKEN
 const INSTANCE_ID = process.env.GZAPPY_INSTANCE_ID
 
 describe('sendMessage', () => {
   it('should send a message successfully', async () => {
-    if (!USER_TOKEN_ID || !INSTANCE_ID) {
-      throw new Error('USER_TOKEN_ID or INSTANCE_ID not found')
+    if (!GZAPPY_API_TOKEN || !INSTANCE_ID) {
+      throw new Error('GZAPPY_API_TOKEN or INSTANCE_ID not found')
     }
 
-    if (USER_TOKEN_ID === '' || INSTANCE_ID === '') {
-      throw new Error('USER_TOKEN_ID or INSTANCE_ID is empty')
+    if (GZAPPY_API_TOKEN === '' || INSTANCE_ID === '') {
+      throw new Error('GZAPPY_API_TOKEN or INSTANCE_ID is empty')
     }
 
     const gClient = new gzappy({
-      userTokenId: USER_TOKEN_ID,
+      token: GZAPPY_API_TOKEN,
       instanceId: INSTANCE_ID,
     })
 
@@ -46,16 +46,16 @@ describe('sendMessage', () => {
   })
 
   it('should get error number is invalid', async () => {
-    if (!USER_TOKEN_ID || !INSTANCE_ID) {
-      throw new Error('USER_TOKEN_ID or INSTANCE_ID not found')
+    if (!GZAPPY_API_TOKEN || !INSTANCE_ID) {
+      throw new Error('GZAPPY_API_TOKEN or INSTANCE_ID not found')
     }
 
-    if (USER_TOKEN_ID === '' || INSTANCE_ID === '') {
-      throw new Error('USER_TOKEN_ID or INSTANCE_ID is empty')
+    if (GZAPPY_API_TOKEN === '' || INSTANCE_ID === '') {
+      throw new Error('GZAPPY_API_TOKEN or INSTANCE_ID is empty')
     }
 
     const gClient = new gzappy({
-      userTokenId: USER_TOKEN_ID,
+      token: GZAPPY_API_TOKEN,
       instanceId: INSTANCE_ID,
     })
 
@@ -70,16 +70,16 @@ describe('sendMessage', () => {
   })
 
   it('should get error 3 messages at a time', async () => {
-    if (!USER_TOKEN_ID || !INSTANCE_ID) {
-      throw new Error('USER_TOKEN_ID or INSTANCE_ID not found')
+    if (!GZAPPY_API_TOKEN || !INSTANCE_ID) {
+      throw new Error('GZAPPY_API_TOKEN or INSTANCE_ID not found')
     }
 
-    if (USER_TOKEN_ID === '' || INSTANCE_ID === '') {
-      throw new Error('USER_TOKEN_ID or INSTANCE_ID is empty')
+    if (GZAPPY_API_TOKEN === '' || INSTANCE_ID === '') {
+      throw new Error('GZAPPY_API_TOKEN or INSTANCE_ID is empty')
     }
 
     const gClient = new gzappy({
-      userTokenId: USER_TOKEN_ID,
+      token: GZAPPY_API_TOKEN,
       instanceId: INSTANCE_ID,
     })
 

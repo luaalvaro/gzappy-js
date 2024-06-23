@@ -1,28 +1,28 @@
 import axios, { AxiosInstance } from 'axios'
 
 class GzappyClient {
-  private userTokenId: string
+  private token: string
   private instanceId: string
   private baseURL: string
   private api: AxiosInstance
 
-  constructor({ userTokenId, instanceId }: GzappyClientOptions) {
-    if (!userTokenId) {
-      throw new Error('userTokenId for gzappy-js is required')
+  constructor({ token, instanceId }: GzappyClientOptions) {
+    if (!token) {
+      throw new Error('Auth token for gzappy-js is required')
     }
 
     if (!instanceId) {
       throw new Error('instanceId for gzappy-js is required')
     }
 
-    this.userTokenId = userTokenId
+    this.token = token
     this.instanceId = instanceId
     this.baseURL = 'https://api.gzappy.com/v1'
 
     this.api = axios.create({
       baseURL: this.baseURL,
       headers: {
-        user_token_id: this.userTokenId,
+        Authorization: `Bearer ${this.token}`,
         'Content-Type': 'application/json',
       },
     })
