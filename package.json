@@ -1,6 +1,6 @@
 {
   "name": "gzappy-js",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "gzappy-js é um pacote JavaScript que facilita a integração com a API de WhatsApp da gzappy.com",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

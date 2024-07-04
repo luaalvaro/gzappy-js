@@ -28,6 +28,106 @@ class GzappyClient {
     })
   }
 
+  // Instances
+  async createInstance(instance_name: string) {
+    try {
+      const response = await this.api.post('/instances/add', {
+        instance_name: instance_name,
+      })
+      return response.data as { qr: string }
+    } catch (error: any) {
+      return {
+        error: error.response.data.msg as string,
+      }
+    }
+  }
+
+  async listInstances() {
+    try {
+      const response = await this.api.get('/instances/list')
+      return response.data as {
+        data: {
+          instance_name: string
+          instance_status: string
+          instance_id: string
+        }[]
+      }
+    } catch (error: any) {
+      return {
+        error: error.response.data.msg as string,
+      }
+    }
+  }
+
+  async restoreInstance(instance_id: string) {
+    try {
+      const response = await this.api.patch('/instances/restore', {
+        instance_id: instance_id,
+      })
+      return response.data as {
+        qr: string
+      }
+    } catch (error: any) {
+      return {
+        error: error.response.data.msg as string,
+      }
+    }
+  }
+
+  async deleteInstance(instance_id: string) {
+    try {
+      const response = await this.api.delete('/instances/delete', {
+        data: {
+          instance_id: instance_id,
+        },
+      })
+      return response.data as {
+        msg: string
+      }
+    } catch (error: any) {
+      return {
+        error: error.response.data.msg as string,
+      }
+    }
+  }
+
+  async disconnectInstance(instance_id: string) {
+    try {
+      const response = await this.api.patch('/instances/disconnect', {
+        instance_id: instance_id,
+      })
+      return response.data as {
+        msg: string
+      }
+    } catch (error: any) {
+      return {
+        error: error.response.data.msg as string,
+      }
+    }
+  }
+
+  async editInstance(
+    instance_id: string,
+    instance_name: string,
+    webhook_receivement_message_url?: string
+  ) {
+    try {
+      const response = await this.api.patch('/instances/update', {
+        instance_name,
+        instance_id,
+        webhook_receivement_message_url,
+      })
+      return response.data as {
+        msg: string
+      }
+    } catch (error: any) {
+      return {
+        error: error.response.data.msg as string,
+      }
+    }
+  }
+
+  // Messages
   async sendMessage(messages: string[], phones: string[]) {
     if (messages.some((message) => message === '')) {
       return { error: 'Message cannot be empty' }
